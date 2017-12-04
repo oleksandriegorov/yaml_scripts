@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# Exit codes : 0 - OK, 1 - No Key found
 import ruamel.yaml
 import re
 import sys
@@ -20,6 +21,7 @@ try:
   config[keytoexpunge]
 except KeyError:
   print("No key like {} found in {}".format(keytoexpunge,yamlfile))
+  sys.exit(1)
 else:
   if remove:
     del config[keytoexpunge]
